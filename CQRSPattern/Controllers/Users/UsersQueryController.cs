@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CQRSPattern.QueryOperation.Users;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CQRSPattern.Controllers.Users
 {
@@ -6,9 +7,16 @@ namespace CQRSPattern.Controllers.Users
     [Route("[controller]")]
     public class UsersQueryController : ControllerBase
     {
-       public UsersQueryController()
+        private readonly IUsersQuery _usersQuery;
+       public UsersQueryController(IUsersQuery usersQuery)
         {
+            _usersQuery = usersQuery;
+        }
 
+        [HttpGet]
+        public dynamic Get()
+        {
+            return _usersQuery.Get();
         }
     }
 }
