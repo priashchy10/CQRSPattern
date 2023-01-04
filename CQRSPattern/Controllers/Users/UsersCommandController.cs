@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using CQRSPattern.Model;
 using CQRSPattern.CommandOperation.Users;
+using Infrastructure.Persistence;
+using Application.CommandOperation.Users;
 
 namespace CQRSPattern.Controllers.Users
 {
@@ -14,9 +15,9 @@ namespace CQRSPattern.Controllers.Users
             _usersCommand = usersCommand;
         }
         [HttpPost]
-        public async Task<dynamic> Save(User user)
+        public async Task<dynamic> Save(UsersCommandDTO userCommandDto)
         {
-            return await _usersCommand.Save(user);
+            return await _usersCommand.Save(userCommandDto);
         }
     }
 }

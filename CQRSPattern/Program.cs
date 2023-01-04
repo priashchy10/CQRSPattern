@@ -1,8 +1,6 @@
 using CQRSPattern.CommandOperation.Users;
-using CQRSPattern.DataAccess.Users;
-using CQRSPattern.Model;
 using CQRSPattern.QueryOperation.Users;
-using CQRSPattern.Repository.Users;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,13 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUsersCommand, UsersCommand>();
-builder.Services.AddScoped<IUsersCommandRepository, UsersCommandRepository>();
-builder.Services.AddScoped<IUsersCommandDataAccess, UsersCommandDataAccess>();
-
 builder.Services.AddScoped<IUsersQuery, UsersQuery>();
-builder.Services.AddScoped<IUsersQueryRepository, UsersQueryRepository>();
-builder.Services.AddScoped<IUsersQueryDataAccess, UsersQueryDataAccess>();
-
 
 
 var app = builder.Build();

@@ -16,7 +16,7 @@ namespace CQRSPattern.Controllers.Users
         [HttpGet]
         public dynamic Get()
         {
-            return _usersQuery.Get();
+            return _usersQuery.GetAll();
         }
     }
 }
